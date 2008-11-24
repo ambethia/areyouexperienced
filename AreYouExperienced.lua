@@ -30,7 +30,7 @@ function f:PLAYER_LOGIN()
 end
 
 function f:PLAYER_XP_UPDATE()
-  if (UnitLevel("Player") < 80) then
+  if (UnitLevel("player") < 80) then
     local xpp = string.format("%d.%d", UnitLevel("player"), UnitXP("player")/UnitXPMax("player")*100)
     SendAddonMessage("AreYouExperienced", xpp, "RAID") -- falls back to party
     if (IsInGuild()) then SendAddonMessage("AreYouExperienced", xpp, "GUILD") end
