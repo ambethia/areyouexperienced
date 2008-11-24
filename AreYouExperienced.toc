@@ -5,5 +5,7 @@
 ## Notes: Share your XP progression with your guild and party.
 
 Libs\LibStub.lua
+Libs\CallbackHandler-1.0.lua
 Libs\LibDataBroker-1.1.lua
+
 AreYouExperienced.lua
