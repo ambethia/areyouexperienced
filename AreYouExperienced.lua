@@ -1,4 +1,4 @@
-local f = CreateFrame("frame", "AreYouExperienced")
+local f = CreateFrame("frame")
 local peeps = {}
 local dataobj = LibStub:GetLibrary("LibDataBroker-1.1"):NewDataObject("AreYouExperienced", {
   icon = "Interface\\Icons\\INV_Misc_PocketWatch_02",
@@ -6,6 +6,8 @@ local dataobj = LibStub:GetLibrary("LibDataBroker-1.1"):NewDataObject("AreYouExp
 })
 
 f:RegisterEvent("PLAYER_LOGIN")
+f:RegisterEvent("PLAYER_XP_UPDATE")
+f:RegisterEvent("CHAT_MSG_ADDON")
 
 f:SetScript("OnEvent", function(self, event, ...)
   if self[event] then
@@ -21,8 +23,6 @@ function dataobj:OnTooltipShow()
 end
 
 function f:PLAYER_LOGIN()
-  self:RegisterEvent("PLAYER_XP_UPDATE")
-  self:RegisterEvent("CHAT_MSG_ADDON")
   self:PLAYER_XP_UPDATE()
 
   self:UnregisterEvent("PLAYER_LOGIN")
