@@ -30,11 +30,13 @@ function f:PLAYER_LOGIN()
 end
 
 function f:PLAYER_XP_UPDATE()
-  local xpp = string.format("%d.%d", UnitLevel("player"), UnitXP("player")/UnitXPMax("player")*100)
-  SendAddonMessage("AreYouExperienced", xpp, "RAID") -- falls back to party
-  if (IsInGuild()) then SendAddonMessage("AreYouExperienced", xpp, "GUILD") end
+  if (UnitLevel("Player") < 80) then
+    local xpp = string.format("%d.%d", UnitLevel("player"), UnitXP("player")/UnitXPMax("player")*100)
+    SendAddonMessage("AreYouExperienced", xpp, "RAID") -- falls back to party
+    if (IsInGuild()) then SendAddonMessage("AreYouExperienced", xpp, "GUILD") end
+  end
 end
 
-function f:CHAT_MSG_ADDON(prefix, message, type, sender)
-  if prefix == "AreYouExperienced" then peeps[sender] = message end
+function f:CHAT_MSG_ADDON(event, prefix, message, type, sender)
+  if (prefix == "AreYouExperienced") then peeps[sender] = message end
 end
