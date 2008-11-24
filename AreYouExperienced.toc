@@ -1,0 +1,9 @@
+## Interface: 30000
+## Title: Are You Experienced?
+## Author: Jason L Perry
+## Version: Alpha
+## Notes: Share your XP progression with your guild and party.
+
+Libs\LibStub.lua
+Libs\LibDataBroker-1.1.lua
+AreYouExperienced.lua
