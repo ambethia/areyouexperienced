@@ -1,6 +1,6 @@
 local f, peeps, MAX_LEVEL = CreateFrame("frame"), {}, 85
 
-local dataobj = LibStub:GetLibrary("LibDataBroker-1.1"):NewDataObject("AreYouExperienced", {
+local dataobj = LibStub:GetLibrary("LibDataBroker-1.1"):NewDataObject("Are You Experienced?", {
   type = "data source",
   icon = "Interface\\Icons\\INV_Misc_PocketWatch_02",
   text = "Are You Experienced?"
