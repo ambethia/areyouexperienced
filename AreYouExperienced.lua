@@ -1,6 +1,7 @@
-local f = CreateFrame("frame")
-local peeps = {}
+local f, peeps, MAX_LEVEL = CreateFrame("frame"), {}, 85
+
 local dataobj = LibStub:GetLibrary("LibDataBroker-1.1"):NewDataObject("AreYouExperienced", {
+  type = "data source",
   icon = "Interface\\Icons\\INV_Misc_PocketWatch_02",
   text = "Are You Experienced?"
 })
@@ -30,7 +31,7 @@ function f:PLAYER_LOGIN()
 end
 
 function f:PLAYER_XP_UPDATE()
-  if (UnitLevel("player") < 80) then
+  if (UnitLevel("player") < MAX_LEVEL) then
     local xpp = string.format("%d.%0.2d", UnitLevel("player"), UnitXP("player")/UnitXPMax("player")*100)
     SendAddonMessage("AreYouExperienced", xpp, "RAID") -- falls back to party
     if (IsInGuild()) then SendAddonMessage("AreYouExperienced", xpp, "GUILD") end
